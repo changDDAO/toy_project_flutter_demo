@@ -12,20 +12,27 @@ class SecondPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Second Page'),
       ),
-      body: Column(
-        children: [
-          Text('+ Button을 눌러보세요.'),
-          ElevatedButton(
-              onPressed:(){
-
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            GetBuilder<PlusButtonController>(
+              builder: (controller){
+                return Text('+ Button을 눌러보세요. count: ${controller.count}');
               },
-              child: Icon(
-                CupertinoIcons.plus,
-                color: Colors.blue,
-                size: 30,
-              )
-          ),
-        ],
+            ),
+            ElevatedButton(
+                onPressed:(){
+                  Get.find<PlusButtonController>().increase();
+                },
+                child: Icon(
+                  CupertinoIcons.plus,
+                  color: Colors.blue,
+                  size: 30,
+                )
+            ),
+          ],
+        ),
       ),
     );
   }
