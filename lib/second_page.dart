@@ -18,18 +18,35 @@ class SecondPage extends StatelessWidget {
           children: [
             GetBuilder<PlusButtonController>(
               builder: (controller){
-                return Text('+ Button을 눌러보세요. count: ${controller.count}');
+                return Text('+ Button을 눌러보세요. count: ${controller.countUp}');
               },
             ),
             ElevatedButton(
                 onPressed:(){
-                  Get.find<PlusButtonController>().increase();
+                  Get.find<PlusButtonController>().increaseUpButton();
                 },
                 child: Icon(
                   CupertinoIcons.plus,
                   color: Colors.blue,
                   size: 30,
-                )
+                ),
+
+            ),
+            GetBuilder<PlusButtonController>(
+              builder: (controller){
+                return Text('+ Button을 눌러보세요. count: ${controller.countDown}');
+              },
+            ),
+            ElevatedButton(
+              onPressed:(){
+                Get.find<PlusButtonController>().increaseDownButton();
+              },
+              child: Icon(
+                CupertinoIcons.plus,
+                color: Colors.blue,
+                size: 30,
+              ),
+
             ),
           ],
         ),
